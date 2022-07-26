@@ -9,7 +9,7 @@ var fabevy =[
         SecondarySkills:'Visual Studio Code, Git',
         ExpectedSalary:'2.5L',
         Education:{
-            collage:'BE - ECE - 2020 - 6.6 CGPA.',
+            collage:'BE',
             hsl:'HSC - State Board - 2016 - 70%.',
             sslc:'SSLC - State Board - 2014 - 85%.'
         },
@@ -25,7 +25,7 @@ var fabevy =[
         SecondarySkills:'Visual Studio Code, Git',
         ExpectedSalary:'2.5L',
         Education:{
-            collage:'BE - CSC - 2020 - 6.6 CGPA.',
+            collage:'BE',
             hsl:'HSC - State Board - 2016 - 70%.',
             sslc:'SSLC - State Board - 2014 - 85%.'
         },
@@ -41,7 +41,7 @@ var fabevy =[
         SecondarySkills:'Visual Studio Code, Git',
         ExpectedSalary:'2.5L',
         Education:{
-            collage:'BE - CSC - 2020 - 6.6 CGPA.',
+            collage:'BE',
             hsl:'HSC - State Board - 2016 - 70%.',
             sslc:'SSLC - State Board - 2014 - 85%.'
         },
@@ -57,7 +57,7 @@ var fabevy =[
         SecondarySkills:'Visual Studio Code, Git',
         ExpectedSalary:'2.5L',
         Education:{
-            collage:'BCA - 2020 - 7.6 CGPA.',
+            collage:'BCA',
             hsl:'HSC - State Board - 2016 - 70%.',
             sslc:'SSLC - State Board - 2014 - 85%.'
         },
@@ -73,7 +73,7 @@ var fabevy =[
         SecondarySkills:'Visual Studio Code, Git',
         ExpectedSalary:'2.5L',
         Education:{
-            collage:'BE - CSC - 2020 - 6.6 CGPA.',
+            collage:'BE',
             hsl:'HSC - State Board - 2016 - 70%.',
             sslc:'SSLC - State Board - 2014 - 85%.'
         },
@@ -89,13 +89,14 @@ var fabevy =[
         SecondarySkills:'Visual Studio Code, Git',
         ExpectedSalary:'2.5L',
         Education:{
-            collage:'BE - CSC - 2020 - 6.6 CGPA.',
+            collage:'BE',
             hsl:'HSC - State Board - 2016 - 70%.',
             sslc:'SSLC - State Board - 2014 - 85%.'
         },
         Availabilitytojoin:'Immediate'
     },
 ]
+
 var main_div;
 
 var bdy_div = document.createElement('div');
@@ -103,7 +104,9 @@ bdy_div.className = 'bdy-div';
 
 document.body.append(bdy_div);
 
+
 fabevy.forEach(fun);
+
 function fun(student){
  var top_part = document.createElement('div');
  top_part.className ='top-flx';
@@ -215,4 +218,38 @@ bdy_div.append(main_div);
 
 }
 
+var select_Box = document.querySelector('.select');
 
+var graduate = document.createElement('option');
+graduate.textContent = '--Graduate--';
+
+var option_Bca = document.createElement('option');
+option_Bca.textContent ='BCA';
+option_Bca.value = 'BCA';
+
+var option_Be = document.createElement('option');
+option_Be.textContent = 'BE';
+option_Be.value = 'BE';
+
+var option_me = document.createElement('option');
+option_me.textContent = 'ME';
+option_me.value = 'ME';
+
+select_Box.append(graduate,option_Bca,option_Be,option_me);
+//console.log(select_Box);
+
+select_Box.addEventListener('change',select);
+function select(){
+    bdy_div.innerHTML ="";
+   var select_val = this.value;
+   function myfun(val){
+    var get_val = val;
+
+    if(select_val == get_val.Education.collage){ 
+        fun(get_val);   
+        console.log(get_val.Education.collage);
+    }  
+    
+}
+fabevy.forEach(myfun);
+}
